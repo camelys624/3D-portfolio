@@ -15,7 +15,7 @@ import { a } from "@react-spring/three";
 import { useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 
-import islandScene from "../assets/models/island.glb";
+import islandScene from "../assets/3d/island.glb";
 
 export function Island({
   isRotating, setIsRotating, setCurrentStage, currentFocusPoint, ...props
@@ -103,16 +103,16 @@ export function Island({
     canvas.addEventListener('pointerdown', handlePointerDown)
     canvas.addEventListener('pointerup', handlePointerUp)
     canvas.addEventListener('pointermove', handlePointerMove)
-    canvas.addEventListener('keydown', handleKeyDown)
-    canvas.addEventListener('keyup', handleKeyUp)
+    document.addEventListener('keydown', handleKeyDown)
+    document.addEventListener('keyup', handleKeyUp)
 
     // Remove event listeners when component unmounts
     return () => {
       canvas.removeEventListener('pointerdown', handlePointerDown)
       canvas.removeEventListener('pointerup', handlePointerUp)
       canvas.removeEventListener('pointermove', handlePointerMove)
-      canvas.removeEventListener('keydown', handleKeyDown)
-      canvas.removeEventListener('keyup', handleKeyUp)
+      document.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('keyup', handleKeyUp)
     }
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove])
 
