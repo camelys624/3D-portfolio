@@ -16,11 +16,11 @@ const Bird = () => {
 
   useFrame(({ clock, camera }) => {
     // Update the Y position simulate the flight moving in a sin wave
-    birdRef.current.rotation.y = Math.sin(clock.elapsedTime * 0.2 + 2)
+    birdRef.current.position.y = Math.sin(clock.elapsedTime) * 0.2 + 2
 
-    if (birdRef.current.rotation.x > camera.rotation.x + 10) {
+    if (birdRef.current.position.x > camera.position.x + 10) {
       birdRef.current.rotation.y = Math.PI
-    } else if (birdRef.current.rotation.x < camera.rotation.x - 10) {
+    } else if (birdRef.current.position.x < camera.position.x - 10) {
       birdRef.current.rotation.y = 0
     }
   
